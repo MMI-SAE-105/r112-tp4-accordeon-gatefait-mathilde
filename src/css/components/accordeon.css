@@ -2,7 +2,6 @@
 * Accordeon
 */
 
-
 .accordeon {
     display: flex;
    
@@ -10,11 +9,15 @@ details {
 
     position: relative;
     width: 130px;
-    transition: all 2s ease-in-out;
     
 }
 
-details[open]> { 
+details.hover {
+    transition: all 2s ease-in-out;
+
+}
+
+details[open] { 
     width: 300px;
 }
 
@@ -23,17 +26,60 @@ details[open]> {
 }
 
 details>summary {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     display: flex;
 }
-
 
 details>div {
     padding-left: 130px;
     width: 170px;
     transition: width 2s ease-in-out;
 }
-
 } 
+
+summary {
+    display: flex;
+    margin: 0;
+    padding: 10px;
+}
+
+summary img {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+details[open] p {
+    display: block;
+    padding: 10px;
+    font-size: 1em;
+    margin: 0;
+    width: 200px;
+    animation: fadeIn 0.5s ease;
+}
+
+
+details:not([open]) p {
+    animation: fadeOut 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
